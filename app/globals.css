@@ -1,0 +1,179 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+  Tesla 风格 Design System — token layer
+  Universal Sans (Display + Text) is a proprietary family and cannot be shipped.
+  Substitute: Inter (loaded in layout.tsx as --font-inter) — an engineered,
+  low-key geometric grotesque that matches the "technology that doesn't announce
+  itself" character. CJK coverage falls back to system fonts (PingFang / YaHei /
+  Noto Sans SC) so Chinese copy renders consistently without a heavy webfont.
+*/
+
+@theme inline {
+  /* Fonts — Display and Text intentionally resolve to the same family, matching
+     Tesla's split where both variants read as one typeface at different sizes. */
+  --font-sans: var(--font-inter), var(--font-noto-sans-sc), 'PingFang SC',
+    'PingFang TC', 'Microsoft YaHei', -apple-system, Arial, sans-serif;
+  --font-display: var(--font-inter), var(--font-noto-sans-sc), 'PingFang SC',
+    'PingFang TC', 'Microsoft YaHei', -apple-system, Arial, sans-serif;
+
+  /* Semantic color surface — mapped to Tesla palette */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Tesla brand-specific tokens */
+  --color-body: var(--body);
+  --color-carbon: var(--carbon);
+  --color-ash: var(--ash);
+  --color-placeholder: var(--placeholder);
+  --color-hairline: var(--hairline);
+  --color-frost: var(--frost);
+  --color-scrim: var(--scrim);
+
+  /* Radius scale — sharp by default, 4px for controls, 12px for media cards */
+  --radius-none: 0px;
+  --radius-sm: 2px;
+  --radius: 4px;
+  --radius-md: 4px;
+  --radius-lg: 4px;
+  --radius-card: 12px;
+  --radius-full: 9999px;
+
+  /* Motion — 0.33s is Tesla's universal timing */
+  --ease-tesla: cubic-bezier(0.5, 0, 0, 0.75);
+  --duration-tesla: 0.33s;
+}
+
+:root {
+  color-scheme: light;
+
+  /* Core palette */
+  --background: #ffffff; /* Pure White */
+  --foreground: #171a20; /* Carbon Dark — headings & nav */
+  --card: #ffffff;
+  --card-foreground: #171a20;
+  --popover: #ffffff;
+  --popover-foreground: #171a20;
+
+  --primary: #3e6ae1; /* Electric Blue — sole chromatic color */
+  --primary-foreground: #ffffff;
+
+  /* Secondary CTA is white-on-graphite; secondary token doubles as alt surface */
+  --secondary: #f4f4f4; /* Light Ash */
+  --secondary-foreground: #393c41; /* Graphite */
+
+  --muted: #f4f4f4; /* Light Ash alternate surface */
+  --muted-foreground: #5c5e62; /* Pewter — tertiary text */
+
+  --accent: #f4f4f4;
+  --accent-foreground: #171a20;
+
+  --destructive: #d93025; /* browser-default-ish error red for form contexts */
+
+  --border: #eeeeee; /* Cloud Gray — dividers */
+  --input: #d0d1d2; /* Pale Silver — control borders */
+  --ring: #3e6ae1; /* Electric Blue focus ring */
+
+  /* Brand-specific */
+  --body: #393c41; /* Graphite — default paragraph */
+  --carbon: #171a20; /* Carbon Dark surface / text */
+  --ash: #f4f4f4; /* Light Ash surface */
+  --placeholder: #8e8e8e; /* Silver Fog */
+  --hairline: #eeeeee; /* Cloud Gray hairline */
+  --frost: rgba(255, 255, 255, 0.75); /* Frosted-glass nav */
+  --scrim: rgba(128, 128, 128, 0.65); /* Modal / cookie overlay */
+
+  --radius: 4px;
+}
+
+.dark {
+  color-scheme: dark;
+
+  /* Dark-mode context uses Carbon Dark as the canvas */
+  --background: #171a20; /* Carbon Dark */
+  --foreground: #ffffff;
+  --card: #1f232b;
+  --card-foreground: #ffffff;
+  --popover: #1f232b;
+  --popover-foreground: #ffffff;
+
+  --primary: #3e6ae1;
+  --primary-foreground: #ffffff;
+
+  --secondary: #2a2e35;
+  --secondary-foreground: #e6e7e8;
+
+  --muted: #23272f;
+  --muted-foreground: #a2a4a8;
+
+  --accent: #23272f;
+  --accent-foreground: #ffffff;
+
+  --destructive: #f16b60;
+
+  --border: rgba(255, 255, 255, 0.12);
+  --input: rgba(255, 255, 255, 0.18);
+  --ring: #3e6ae1;
+
+  --body: #d0d1d2;
+  --carbon: #171a20;
+  --ash: #1f232b;
+  --placeholder: #8e8e8e;
+  --hairline: rgba(255, 255, 255, 0.12);
+  --frost: rgba(23, 26, 32, 0.75);
+  --scrim: rgba(0, 0, 0, 0.65);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-body font-sans antialiased;
+  }
+  /* Tesla uses default tracking at every level — no negative letter-spacing */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    letter-spacing: normal;
+    color: var(--foreground);
+  }
+}
+
+@layer utilities {
+  /* Frosted-glass navigation backdrop */
+  .glass-nav {
+    background-color: var(--frost);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+  }
+  /* Universal Tesla transition — color-only, 0.33s */
+  .transition-tesla {
+    transition-property: color, background-color, border-color, box-shadow;
+    transition-duration: var(--duration-tesla);
+    transition-timing-function: var(--ease-tesla);
+  }
+}
