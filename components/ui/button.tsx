@@ -26,10 +26,10 @@ const buttonVariants = cva(
         link: 'border-transparent font-normal text-muted-foreground underline-offset-4 hover:text-foreground hover:underline',
       },
       size: {
-        // CTA default — 40px tall, 200px min-width (Tesla primary metrics)
-        cta: 'h-10 min-w-[200px] gap-2 px-6',
-        // Secondary CTA companion width (~160px)
-        ctaSecondary: 'h-10 min-w-[160px] gap-2 px-6',
+        // CTA default — 40px tall, 264px min-width (measured on tesla.com "Order Now")
+        cta: 'h-10 min-w-[264px] gap-2 px-6',
+        // Secondary CTA — same 264px width as primary (tesla.com pairs them equal)
+        ctaSecondary: 'h-10 min-w-[264px] gap-2 px-6',
         // Nav item — 32px tall, 4px 16px padding
         nav: 'h-8 gap-1.5 px-4',
         // Compact inline control
