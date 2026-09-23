@@ -6,6 +6,8 @@ import { ShowcaseModel } from '@/components/showcase/showcase-model'
 import { ShowcaseLineup } from '@/components/showcase/showcase-lineup'
 import { ShowcaseTokens } from '@/components/showcase/showcase-tokens'
 import { ShowcaseComponents } from '@/components/showcase/showcase-components'
+import { ShowcaseSystem } from '@/components/showcase/showcase-system'
+import { Footer } from '@/components/ui/footer'
 
 const navItems = [
   {
@@ -61,7 +63,9 @@ export default function Page() {
         </div>
         <ShowcaseTokens />
         <ShowcaseComponents />
+        <ShowcaseSystem />
       </main>
+      <Footer />
       <AskBar />
     </div>
   )

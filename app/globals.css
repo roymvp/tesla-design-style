@@ -64,6 +64,20 @@
   /* Motion — 0.33s is Tesla's universal timing */
   --ease-tesla: cubic-bezier(0.5, 0, 0, 0.75);
   --duration-tesla: 0.33s;
+
+  /* Layout — container max-width (tesla.cn measured ~1383px content rail) and
+     the standard horizontal gutter used across sections. */
+  --container-tesla: 1383px;
+  --gutter-tesla: 24px;
+
+  /* Z-index scale — single source of stacking order so overlays never collide.
+     nav (sticky bar) < dropdown (nav mega panel) < scrim < modal < toast. */
+  --z-base: 0;
+  --z-nav: 40;
+  --z-dropdown: 50;
+  --z-scrim: 60;
+  --z-modal: 70;
+  --z-toast: 80;
 }
 
 :root {
@@ -177,5 +191,18 @@
     transition-property: color, background-color, border-color, box-shadow;
     transition-duration: var(--duration-tesla);
     transition-timing-function: var(--ease-tesla);
+  }
+}
+
+/* Accessibility — honor reduced-motion: neutralize transitions, transform
+   animations, and the loading pulses/spins across the whole system. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
