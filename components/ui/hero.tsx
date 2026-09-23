@@ -47,6 +47,18 @@ function Hero({
         alt={alt}
         className="absolute inset-0 z-0 h-full w-full object-cover"
       />
+      {/* Legibility scrim: dark heroes get a top-down gradient so the white
+          wordmark, nav links, and title stay readable over bright skies;
+          light heroes get a soft white wash for dark Carbon text. */}
+      <div
+        aria-hidden
+        className={cn(
+          'pointer-events-none absolute inset-x-0 top-0 z-0 h-2/5',
+          tone === 'dark'
+            ? 'bg-gradient-to-b from-black/45 via-black/15 to-transparent'
+            : 'bg-gradient-to-b from-white/70 via-white/25 to-transparent',
+        )}
+      />
       <div className="relative z-10 flex flex-col items-center gap-3 text-center">
         <h1
           className={cn(
@@ -60,14 +72,21 @@ function Hero({
           <p
             className={cn(
               'text-sm leading-5',
-              tone === 'dark' ? 'text-white/85' : 'text-body',
+              tone === 'dark' ? 'text-white/90' : 'text-body',
             )}
           >
             {subtitle}
           </p>
         ) : null}
         {promo ? (
-          <p className="text-[22px] font-normal text-primary">{promo}</p>
+          <p
+            className={cn(
+              'text-[22px] font-normal',
+              tone === 'dark' ? 'text-white' : 'text-primary',
+            )}
+          >
+            {promo}
+          </p>
         ) : null}
       </div>
 
@@ -78,7 +97,7 @@ function Hero({
         <Button
           variant="secondary"
           size="ctaSecondary"
-          className="w-full sm:w-auto"
+          className="w-full border-0 bg-white/75 text-foreground backdrop-blur-md hover:bg-white/90 sm:w-auto"
         >
           {secondaryLabel}
         </Button>
