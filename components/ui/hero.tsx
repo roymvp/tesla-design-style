@@ -65,7 +65,7 @@ function Hero({
       <div className="relative z-10 flex flex-col items-center gap-3 text-center">
         <h1
           className={cn(
-            'text-[28px] font-medium leading-tight md:text-[40px] md:leading-[48px]',
+            'text-[28px] font-medium leading-tight md:text-[40px] md:leading-[48px] lg:text-[56px] lg:leading-[56px]',
             tone === 'dark' ? 'text-white' : 'text-foreground',
           )}
         >
