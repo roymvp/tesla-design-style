@@ -5,8 +5,11 @@ import { Button } from '@/components/ui/button'
   Tesla 风格 Hero
   - full-viewport (100vh) section dominated by cinematic photography
   - vertical rhythm: model name -> subtitle -> CTA pair
-  - promo text uses Electric Blue, linking incentive to action
-  - no overlay gradient; text alignment is centered, content sits high
+  - promo text uses Electric Blue (light tone), linking incentive to action
+  - legibility scrim is mandatory: overlaid text must clear AA contrast, so a
+    tone-aware top gradient guarantees readability over bright/busy imagery.
+    Never place light text directly on unknown/bright photography without it.
+  - text alignment is centered, content sits high
 */
 function Hero({
   title,
