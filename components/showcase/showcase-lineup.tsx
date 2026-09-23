@@ -35,8 +35,8 @@ export function ShowcaseLineup() {
   return (
     <section className="mx-auto max-w-[1383px] px-6 py-24">
       <div className="mb-14 flex flex-col items-center gap-3 text-center">
-        <h2 className="text-[32px] font-medium leading-tight text-foreground">
-          车型阵容
+          <h2 className="text-[28px] font-medium leading-9 text-foreground">
+            车型阵容
         </h2>
         <p className="max-w-xl text-sm leading-relaxed text-body">
           导航面板采用透明卡片承载去背车型渲染图，仅靠间距分隔，无边框、无阴影。
@@ -50,11 +50,11 @@ export function ShowcaseLineup() {
       </div>
 
       <div className="mt-24 mb-14 flex flex-col items-center gap-3 text-center">
-        <h2 className="text-[32px] font-medium leading-tight text-foreground">
+        <h2 className="text-[28px] font-medium leading-9 text-foreground">
           探索品类
         </h2>
         <p className="max-w-xl text-sm leading-relaxed text-body">
-          品类卡为全幅横向摄影，12px 圆角裁切，标签置于左上角，依靠画面本身的暗部保证白字对比度。
+          品类卡为全幅横向摄影，8px 圆角裁切，标签置于左上角，依靠画面本身的暗部保证白字对比度。
         </p>
       </div>
 

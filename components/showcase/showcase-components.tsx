@@ -28,10 +28,10 @@ export function ShowcaseComponents() {
   return (
     <section className="mx-auto max-w-[1383px] px-6 py-24">
       <div className="mb-14 flex flex-col gap-3">
-        <span className="text-sm font-medium tracking-[0.2em] text-muted-foreground">
+        <span className="text-sm font-medium text-muted-foreground">
           组件
         </span>
-        <h2 className="text-[32px] font-medium leading-tight text-foreground">
+        <h2 className="text-[28px] font-medium leading-9 text-foreground">
           按钮 · 输入框 · 卡片
         </h2>
       </div>

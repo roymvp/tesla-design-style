@@ -12,7 +12,7 @@ const colors = [
 
 const typeScale = [
   { label: '主标题 Hero', sample: '技术，不必张扬', className: 'text-[40px] font-medium leading-[48px]' },
-  { label: '区块标题', sample: '车型阵容', className: 'text-[32px] font-medium' },
+  { label: '区块标题', sample: '车型阵容', className: 'text-[28px] font-medium leading-9' },
   { label: '产品名', sample: '零式轿跑', className: 'text-[17px] font-medium' },
   { label: '促销文案', sample: '限时低息金融方案', className: 'text-[22px] font-normal text-primary' },
   { label: '正文 Body', sample: '双电机全轮驱动，续航 715 公里。', className: 'text-sm leading-5 text-body' },
@@ -21,9 +21,9 @@ const typeScale = [
 
 const radii = [
   { name: '控件 4px', className: 'rounded-[4px]' },
-  { name: '媒体卡 12px', className: 'rounded-[12px]' },
-  { name: '圆形 50%', className: 'rounded-full' },
-  { name: '直角 0', className: 'rounded-none' },
+  { name: '媒体卡 8px', className: 'rounded-[8px]' },
+  { name: '圆形 full', className: 'rounded-full' },
+  { name: '全幅 / 链接 0', className: 'rounded-none' },
 ]
 
 export function ShowcaseTokens() {
@@ -31,10 +31,10 @@ export function ShowcaseTokens() {
     <section className="border-t border-border bg-muted/40">
       <div className="mx-auto max-w-[1383px] px-6 py-24">
         <div className="mb-14 flex flex-col gap-3">
-          <span className="text-sm font-medium tracking-[0.2em] text-muted-foreground">
+          <span className="text-sm font-medium text-muted-foreground">
             设计令牌
           </span>
-          <h2 className="text-[32px] font-medium leading-tight text-foreground">
+          <h2 className="text-[28px] font-medium leading-9 text-foreground">
             颜色 · 字体 · 圆角 · 动效
           </h2>
         </div>
@@ -98,7 +98,7 @@ export function ShowcaseTokens() {
               <span className="cursor-pointer rounded-[4px] bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-tesla hover:bg-primary/90">
                 悬停我
               </span>
-              <span className="cursor-pointer rounded-[4px] border border-input px-4 py-2 text-sm font-medium text-secondary-foreground transition-tesla hover:bg-muted">
+              <span className="cursor-pointer rounded-[4px] bg-background px-4 py-2 text-sm font-medium text-secondary-foreground transition-tesla hover:bg-muted">
                 也悬停我
               </span>
             </div>

@@ -17,9 +17,11 @@ const buttonVariants = cva(
       variant: {
         // Primary CTA — Electric Blue, the only chromatic control
         primary: 'bg-primary text-primary-foreground hover:bg-primary/90',
-        // Secondary CTA — light surface, Graphite text, hairline for definition
+        // Secondary CTA — solid white surface, Graphite text, NO visible border
+        // (tesla.cn secondary is solid white with a transparent 3px border; it
+        // pairs with the blue primary on photography, never an outlined button)
         secondary:
-          'border-input bg-background text-secondary-foreground hover:bg-muted',
+          'bg-background text-secondary-foreground hover:bg-muted',
         // Nav button — transparent, Carbon Dark text, subtle wash on hover
         nav: 'bg-transparent text-foreground hover:bg-foreground/[0.06]',
         // Text link — Pewter, underline on hover, no background
