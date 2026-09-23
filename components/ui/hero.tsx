@@ -94,13 +94,20 @@ function Hero({
       </div>
 
       <div className="relative z-10 mt-8 flex w-full flex-col items-center gap-3 sm:flex-row sm:justify-center">
-        <Button variant="primary" size="cta" className="w-full sm:w-auto">
+        <Button
+          variant="primary"
+          size="cta"
+          className="w-full sm:w-[200px]"
+        >
           {primaryLabel}
         </Button>
+        {/* Secondary CTA over photography: solid white, Graphite text, transparent
+            border — the exact tesla.cn "了解更多" treatment (measured rgb(255,255,255),
+            no backdrop). Solid white already clears AA on any imagery. */}
         <Button
           variant="secondary"
           size="ctaSecondary"
-          className="w-full border-0 bg-white/75 text-foreground backdrop-blur-md hover:bg-white/90 sm:w-auto"
+          className="w-full border-transparent bg-white text-secondary-foreground hover:bg-white/90 sm:w-[200px]"
         >
           {secondaryLabel}
         </Button>

@@ -96,16 +96,19 @@ function ModelCard({
           nativeButton={false}
           variant="primary"
           size="cta"
-          className="w-full sm:w-auto"
+          className="w-full sm:w-[200px]"
         >
           {primaryLabel}
         </Button>
+        {/* Secondary CTA over photography: solid white + Graphite text, the exact
+            tesla.cn treatment (measured rgb(255,255,255), transparent border, no
+            backdrop). Solid white clears AA on any imagery. */}
         <Button
           render={<a href={secondaryHref} />}
           nativeButton={false}
           variant="secondary"
           size="ctaSecondary"
-          className="w-full border-0 bg-white/75 text-foreground backdrop-blur-md hover:bg-white/90 sm:w-auto"
+          className="w-full border-transparent bg-white text-secondary-foreground hover:bg-white/90 sm:w-[200px]"
         >
           {secondaryLabel}
         </Button>
