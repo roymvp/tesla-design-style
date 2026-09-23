@@ -2,16 +2,22 @@
 
 import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
-import { Globe, HelpCircle, Menu, User } from 'lucide-react'
+import { HelpCircle, Menu, User } from 'lucide-react'
 
 import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
 import { Wordmark } from '@/components/ui/wordmark'
 
 /*
-  Tesla 风格 Navigation
-  - floats above the hero with no background, border, or shadow
-  - wordmark left, centered category links, three icon buttons right
+  Tesla 风格 Navigation (measured against tesla.cn)
+  - 56px tall bar that floats above the hero with no background, border, shadow
+  - wordmark pinned left, icon buttons pinned right (both in normal flow)
+  - primary category links are ABSOLUTELY CENTERED to the viewport
+    (left-1/2 -translate-x-1/2), independent of the wordmark/icon widths — this
+    is the tesla.cn signature and cannot be reproduced with justify-between,
+    which only centers the middle group when both sides are equal width.
+  - right side holds exactly two icons on desktop: help + account. tesla.cn has
+    no persistent language/region globe in the bar; do not add one.
   - transitions from transparent (over dark hero) to frosted white on scroll
   - sticky at the top with no slide-in animation
   - a nav item may open a full-width mega dropdown panel: a vehicle grid on the
@@ -97,13 +103,14 @@ function TeslaNav({
       )}
       {...props}
     >
-      <nav className="mx-auto flex h-16 max-w-[1383px] items-center justify-between px-6">
+      <nav className="relative mx-auto flex h-14 max-w-[1383px] items-center justify-between px-6">
         <Wordmark
           text={wordmark}
           className={onDark ? 'text-white' : 'text-foreground'}
         />
 
-        <div className="hidden items-center gap-1 md:flex">
+        {/* Primary links: absolutely centered to the bar (tesla.cn signature) */}
+        <div className="absolute left-1/2 top-0 hidden h-full -translate-x-1/2 items-center gap-1 md:flex">
           {items.map((item, i) => (
             <Button
               key={item.label}
@@ -131,17 +138,6 @@ function TeslaNav({
             )}
           >
             <HelpCircle />
-          </Button>
-          <Button
-            variant="nav"
-            size="icon"
-            aria-label="语言与地区"
-            className={cn(
-              'hidden sm:inline-flex',
-              onDark && 'text-white hover:bg-white/15',
-            )}
-          >
-            <Globe />
           </Button>
           <Button
             variant="nav"
