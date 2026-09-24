@@ -42,8 +42,10 @@ const buttonVariants = cva(
         sm: 'h-8 gap-1.5 px-4',
         // Inline text link — no fixed height
         link: 'h-auto p-0',
-        // Square icon button (help / globe / account / carousel arrows)
+        // Square icon button (carousel arrows)
         icon: 'size-10 border-0',
+        // Nav icon button — 32×32 with a 20px glyph (tesla.cn measured: help/account)
+        navIcon: 'size-8 border-0 [&_svg]:size-5',
       },
     },
     defaultVariants: {

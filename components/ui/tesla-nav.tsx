@@ -9,24 +9,31 @@ import { Button } from '@/components/ui/button'
 import { Wordmark } from '@/components/ui/wordmark'
 
 /*
-  Tesla 风格 Navigation (measured against tesla.cn)
-  - 56px tall bar that floats above the hero with no background, border, shadow
+  Tesla 风格 Navigation (measured against tesla.cn, 1440 viewport)
+  - 56px tall bar (h-14); gutters 48px each side via max-w-[1383px] + px-5
+    (logo left ≈48, right icon edge ≈1440-48 — both matched to tesla.cn)
   - wordmark pinned left, icon buttons pinned right (both in normal flow)
+  - icon buttons are 32×32 (size="navIcon"), NOT 40 — tesla.cn measured 32px
+    help/account glyphs; carousel arrows keep the larger 40px icon size
   - primary category links are ABSOLUTELY CENTERED to the viewport
     (left-1/2 -translate-x-1/2), independent of the wordmark/icon widths — this
     is the tesla.cn signature and cannot be reproduced with justify-between,
     which only centers the middle group when both sides are equal width.
   - right side holds exactly two icons on desktop: help + account. tesla.cn has
     no persistent language/region globe in the bar; do not add one.
-  - transitions from transparent (over dark hero) to frosted white on scroll
   - sticky at the top with no slide-in animation
   - a nav item may open a full-width mega dropdown panel: a vehicle grid on the
     left (~70%) + a text-link sidebar on the right (~30%), on a seamless white
     surface with no shadow or border (matches tesla.cn). The panel opens on
     hover and on keyboard focus, and closes on mouse leave or Escape.
-  Pass `overlay` to start transparent over a dark hero; it switches to the
-  frosted-white treatment once the page scrolls. Set `overlay={false}` for
-  content pages that always want the solid white bar.
+
+  HERO RELATIONSHIP (tesla.cn homepage, measured): the nav sits in NORMAL FLOW
+  on the page background and the full-bleed hero image starts BELOW it (image
+  top = 56). The hero does NOT extend behind the nav. So the page must render
+  the nav with overlay={false} and must NOT pull the hero up with a negative
+  margin. The `overlay` mode (transparent → frosted-white on scroll, white text
+  over a dark hero) is the tesla.com treatment, kept only for pages that
+  deliberately want the hero image to bleed behind the bar.
 */
 
 type PanelVehicle = {
@@ -103,7 +110,7 @@ function TeslaNav({
       )}
       {...props}
     >
-      <nav className="relative mx-auto flex h-14 max-w-[1383px] items-center justify-between px-6">
+      <nav className="relative mx-auto flex h-14 max-w-[1383px] items-center justify-between px-5">
         <Wordmark
           text={wordmark}
           className={onDark ? 'text-white' : 'text-foreground'}
@@ -130,7 +137,7 @@ function TeslaNav({
         <div className="flex items-center gap-1">
           <Button
             variant="nav"
-            size="icon"
+            size="navIcon"
             aria-label="帮助"
             className={cn(
               'hidden sm:inline-flex',
@@ -141,7 +148,7 @@ function TeslaNav({
           </Button>
           <Button
             variant="nav"
-            size="icon"
+            size="navIcon"
             aria-label="账户"
             className={cn(onDark && 'text-white hover:bg-white/15')}
           >
@@ -149,7 +156,7 @@ function TeslaNav({
           </Button>
           <Button
             variant="nav"
-            size="icon"
+            size="navIcon"
             aria-label="菜单"
             className={cn('md:hidden', onDark && 'text-white hover:bg-white/15')}
           >
@@ -166,7 +173,7 @@ function TeslaNav({
             if (closeTimer.current) clearTimeout(closeTimer.current)
           }}
         >
-          <div className="mx-auto grid max-w-[1383px] grid-cols-[70%_30%] gap-6 px-6 pb-10 pt-4">
+          <div className="mx-auto grid max-w-[1383px] grid-cols-[70%_30%] gap-6 px-5 pb-10 pt-4">
             <div className="grid grid-cols-2 gap-x-6 gap-y-8 border-r border-hairline pr-6 sm:grid-cols-3 lg:grid-cols-4">
               {activePanel.vehicles.map((v) => (
                 <div key={v.name} className="flex flex-col items-center">

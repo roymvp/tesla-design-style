@@ -54,8 +54,8 @@ const navItems = [
 export default function Page() {
   return (
     <div className="flex min-h-screen flex-col">
-      <TeslaNav items={navItems} wordmark="MOTORS" overlay />
-      <main className="-mt-16 flex-1">
+      <TeslaNav items={navItems} wordmark="MOTORS" overlay={false} />
+      <main className="flex-1">
         <ShowcaseHero />
         <ShowcaseModel />
         <div id="lineup">
