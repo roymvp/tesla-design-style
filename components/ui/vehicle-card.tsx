@@ -30,7 +30,7 @@ function VehicleCard({
       <img
         src={image || '/placeholder.svg'}
         alt={alt}
-        className="h-28 w-full object-contain"
+        className="h-48 w-full object-contain md:h-56"
       />
       <p className="text-[17px] font-medium leading-5 text-foreground">
         {name}

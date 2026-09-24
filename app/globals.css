@@ -50,18 +50,34 @@
   --color-frost: var(--frost);
   --color-scrim: var(--scrim);
 
-  /* Radius scale — sharp by default, 4px for controls, 12px for media cards */
+  /* Radius scale — 4px is the real default (controls), 8px for media cards
+     (tesla.cn measured: 4px + 8px only, no 12px). radius 0 is reserved for
+     full-bleed imagery and text links — it is never a global "default". */
   --radius-none: 0px;
   --radius-sm: 2px;
   --radius: 4px;
   --radius-md: 4px;
   --radius-lg: 4px;
-  --radius-card: 12px;
+  --radius-card: 8px;
   --radius-full: 9999px;
 
   /* Motion — 0.33s is Tesla's universal timing */
   --ease-tesla: cubic-bezier(0.5, 0, 0, 0.75);
   --duration-tesla: 0.33s;
+
+  /* Layout — container max-width (tesla.cn measured ~1383px content rail) and
+     the standard horizontal gutter used across sections. */
+  --container-tesla: 1383px;
+  --gutter-tesla: 24px;
+
+  /* Z-index scale — single source of stacking order so overlays never collide.
+     nav (sticky bar) < dropdown (nav mega panel) < scrim < modal < toast. */
+  --z-base: 0;
+  --z-nav: 40;
+  --z-dropdown: 50;
+  --z-scrim: 60;
+  --z-modal: 70;
+  --z-toast: 80;
 }
 
 :root {
@@ -175,5 +191,18 @@
     transition-property: color, background-color, border-color, box-shadow;
     transition-duration: var(--duration-tesla);
     transition-timing-function: var(--ease-tesla);
+  }
+}
+
+/* Accessibility — honor reduced-motion: neutralize transitions, transform
+   animations, and the loading pulses/spins across the whole system. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

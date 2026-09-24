@@ -3,7 +3,7 @@ import { cn } from '@/lib/utils'
 /*
   Tesla 风格 Category Card
   - full-bleed landscape photography, ~2:1 ratio
-  - 12px border-radius, overflow hidden to clip the image
+  - 8px border-radius (tesla.cn media-card radius), overflow hidden to clip the image
   - white label in the top-left corner, no overlay gradient, no shadow
     (text relies on image darkness for contrast)
 */
@@ -24,7 +24,7 @@ function CategoryCard({
     <a
       data-slot="category-card"
       className={cn(
-        'group relative block aspect-[2/1] overflow-hidden rounded-[12px] transition-tesla outline-none focus-visible:ring-2 focus-visible:ring-ring',
+        'group relative block aspect-[2/1] overflow-hidden rounded-[8px] transition-tesla outline-none focus-visible:ring-2 focus-visible:ring-ring',
         className,
       )}
       {...props}

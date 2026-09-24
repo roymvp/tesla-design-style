@@ -1,5 +1,10 @@
+'use client'
+
+import { useState } from 'react'
+
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
+import { OptionRow } from '@/components/ui/option-row'
 import {
   Card,
   CardContent,
@@ -24,14 +29,23 @@ function Panel({
   )
 }
 
+const TRIMS = [
+  { id: 'rwd', label: '后轮驱动版', value: '¥235,500' },
+  { id: 'lr-rwd', label: '长续航后轮驱动版', value: '¥259,500' },
+  { id: 'lr-awd', label: '长续航全轮驱动版', value: '¥285,500' },
+  { id: 'perf', label: '高性能全轮驱动版', value: '¥339,500' },
+]
+
 export function ShowcaseComponents() {
+  const [trim, setTrim] = useState('rwd')
+
   return (
     <section className="mx-auto max-w-[1383px] px-6 py-24">
       <div className="mb-14 flex flex-col gap-3">
-        <span className="text-sm font-medium tracking-[0.2em] text-muted-foreground">
+        <span className="text-sm font-medium text-muted-foreground">
           组件
         </span>
-        <h2 className="text-[32px] font-medium leading-tight text-foreground">
+        <h2 className="text-[28px] font-medium leading-9 text-foreground">
           按钮 · 输入框 · 卡片
         </h2>
       </div>
@@ -146,6 +160,23 @@ export function ShowcaseComponents() {
                 </Button>
               </CardFooter>
             </Card>
+          </div>
+        </Panel>
+      </div>
+
+      {/* Configurator option rows */}
+      <div className="mt-16">
+        <Panel title="配置选择（OptionRow）">
+          <div className="flex max-w-md flex-col gap-3">
+            {TRIMS.map((t) => (
+              <OptionRow
+                key={t.id}
+                label={t.label}
+                value={t.value}
+                selected={trim === t.id}
+                onClick={() => setTrim(t.id)}
+              />
+            ))}
           </div>
         </Panel>
       </div>
